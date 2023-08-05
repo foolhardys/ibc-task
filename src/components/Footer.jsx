@@ -54,8 +54,20 @@ const socialLinks = [
 
 const Footer = () => {
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [data, setData] = useState({ name: '', email: '' })
+
+  const handleChange = (e)=>{
+    const name = e.target.name
+    const value = e.target.value
+    setData({...data, [name]: value})
+  }
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    setData({ name: '', email: '' })
+  }
+
+
 
   return (
     <section className='footer' id='contact'>
@@ -73,7 +85,7 @@ const Footer = () => {
           return <a href={link} className='footer-icon'> {icon} </a>
         })}
       </div>
-      <form className="footer-form">
+      <form className="footer-form" onSubmit={handleSubmit}>
         <h4 className='footer-heading'>Contact Me!!</h4>
         <input
           type="text"
@@ -82,8 +94,8 @@ const Footer = () => {
           id="name"
           required
           className='form-input footer-input'
-          value={name}
-          onChange={(e)=> setName(e.target.value)} />
+          value={data.name}
+          onChange={handleChange} />
         <input
           type="email"
           name="email"
@@ -91,9 +103,9 @@ const Footer = () => {
           id="email"
           required
           className='form-input footer-input'
-          value={email}
-          onChange={(e)=> setEmail(e.target.value)} />
-          <button type="submit" className='btn footer-input'>SUBMIT</button>
+          value={data.email}
+          onChange={handleChange} />
+        <button type="submit" className='btn footer-input'>SUBMIT</button>
       </form>
     </section>
   )
