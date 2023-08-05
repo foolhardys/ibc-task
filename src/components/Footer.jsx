@@ -80,6 +80,7 @@ const Footer = () => {
           name="name"
           placeholder='Type your Name...'
           id="name"
+          required
           className='form-input footer-input'
           value={name}
           onChange={(e)=> setName(e.target.value)} />
@@ -88,6 +89,7 @@ const Footer = () => {
           name="email"
           placeholder='Type your Email...'
           id="email"
+          required
           className='form-input footer-input'
           value={email}
           onChange={(e)=> setEmail(e.target.value)} />
